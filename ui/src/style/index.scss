@@ -1,0 +1,103 @@
+@import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@300;400;500;600;700&family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+    font-size: 20px;
+}
+
+.document {
+    @apply font-document leading-[1em];
+}
+
+.syntax-highlighting .token-argument, .syntax-highlighting .token-argument_start, .syntax-highlighting .token-argument_end {
+    @apply text-orange-500 italic;
+}
+
+.syntax-highlighting .token-command {
+    @apply text-cyan-500 italic;
+}
+
+.syntax-highlighting .token-identifier {
+    @apply text-cyan-500 italic;
+}
+
+.syntax-highlighting .token-comment {
+    @apply opacity-50 italic;
+}
+
+.syntax-highlighting .token-math {
+    @apply text-blue-600 italic;
+}
+
+.syntax-highlighting .token {
+    position: relative;
+}
+
+
+.syntax-highlighting .token-newline:not(:last-child):before {
+    color: white;
+    content: '\21B5';
+    opacity: 0.4;
+    left: .2em;
+    position: absolute;
+}
+
+.animate-bottom-drawer {
+    animation: bottom-drawer 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+@keyframes bottom-drawer {
+    0% {
+        transform: translateY(100%);
+    }
+    100% {
+        transform: translateY(0);
+    }
+}
+
+::-webkit-scrollbar,
+::-webkit-scrollbar-track,
+::-webkit-scrollbar-track-piece {
+	background: theme('colors.dark.400');
+	-webkit-box-shadow: none;
+	-moz-box-shadow: none;
+	box-shadow: none;
+	border: none;
+	width: .75rem;
+}
+::-webkit-scrollbar-thumb{
+	background: white;
+	width:.5rem;
+	border:.2rem solid theme('colors.dark.400');
+	border-radius: 9999px;
+}
+
+.color-switch, .color-switch * {
+    transition: color 150ms ease, background 150ms ease !important;
+    transition-duration: 150ms !important;
+    transition-timing-function: ease !important;
+}
+
+.blink {
+    animation: blink 1s;
+}
+
+.center {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+@keyframes blink {
+    0% {
+        background-color: theme('colors.yellow.400'); 
+    }
+
+    100% {
+        background-color: transparent;
+    }
+}

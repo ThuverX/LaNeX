@@ -1,0 +1,54 @@
+
+
+
+.document {
+
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+        font-weight: normal;
+    }
+
+    span {
+        margin: 0;
+    }
+    
+    .bold {
+        font-weight: bold;
+    }
+    
+    .italic {
+        font-style: italic;
+    }
+
+    .underscore {
+        text-decoration: underline;
+    }
+
+
+    ul {
+        list-style-type: none;
+        counter-reset: list;
+
+        li {
+            margin-top: .8em;
+            margin-bottom: .8em;
+
+            &:not(data-label) {
+                counter-increment: list;
+                &:before {
+                    content: counter(list) '. ';
+                }
+            }
+    
+            &[data-label]:not([data-label=""]) {
+                &:before {
+                    content: attr(data-label) ' ';
+                }
+            }
+        }
+    }
+}
