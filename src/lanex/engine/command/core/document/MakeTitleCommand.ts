@@ -10,33 +10,40 @@ export class MakeTitleCommand extends Command {
         let rootScope = this.getRootScope()
         let doc_info = rootScope.variables.get('doc_info') || {}
 
-        let title = doc_info['title'] || []
-        let author = doc_info['author'] || []
-        let date = doc_info['date'] || []
+        let title = doc_info['title'] || undefined
+        let author = doc_info['author'] || undefined
+        let date = doc_info['date'] || undefined
+
+        const children: Array<NormalizedNode> = []
+
+        
+        if(title)
+            children.push(NAST.createNode(
+                NormalizedNodeType.HEADING1,
+                {},
+                this.pass(title),
+                AST.combineRange(title)))
+
+        if(author)
+            children.push(NAST.createNode(
+                NormalizedNodeType.HEADING3,
+                {},
+                this.pass(author),
+                AST.combineRange(author)))
+                
+        if(date)
+            children.push(NAST.createNode(
+                NormalizedNodeType.HEADING3,
+                {},
+                this.pass(date),
+                AST.combineRange(date)))
         
         return NAST.createNode(
             NormalizedNodeType.GROUP,
             {
                 style: 'center'
             },
-            [
-                NAST.createNode(
-                    NormalizedNodeType.HEADING1,
-                    {},
-                    this.pass(title),
-                    AST.combineRange(title)),
-                NAST.createNode(
-                    NormalizedNodeType.HEADING3,
-                    {},
-                    this.pass(author),
-                    AST.combineRange(author)),
-                NAST.createNode(
-                    NormalizedNodeType.HEADING3,
-                    {},
-                    this.pass(date),
-                    AST.combineRange(date))
-
-            ],
+           children,
             node.range
         )
     }
