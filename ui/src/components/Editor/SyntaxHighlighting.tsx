@@ -36,7 +36,7 @@ const SyntaxHighlighting = forwardRef<HTMLDivElement, { tokens: Array<Token>, cu
                 }
 
                 return (
-                    <span data-range-from={ token.range.start } data-range-to={ token.range.end }  key={ `${ token.range.start }-${ token.range.end }` } className={ className }>
+                    <span data-range-from={ token.range.start } data-range-to={ token.range.end } key={ `${ token.range.start }-${ token.range.end }` } className={ className }>
                         { tokenBeforeCursor }
                         { isCursorInToken && <span data-token-value={ token.value } data-token-type={ token.type.toLowerCase() } className='cursor-location'></span>}
                         { tokenAfterCursor }

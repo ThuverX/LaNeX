@@ -16,7 +16,6 @@ export class MakeTitleCommand extends Command {
 
         const children: Array<NormalizedNode> = []
 
-        
         if(title)
             children.push(NAST.createNode(
                 NormalizedNodeType.HEADING1,
@@ -30,7 +29,7 @@ export class MakeTitleCommand extends Command {
                 {},
                 this.pass(author),
                 AST.combineRange(author)))
-                
+
         if(date)
             children.push(NAST.createNode(
                 NormalizedNodeType.HEADING3,
